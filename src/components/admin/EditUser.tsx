@@ -67,7 +67,7 @@ const EditUsers = () => {
       if (!data.password) delete updateData.password; // Không gửi mật khẩu nếu không đổi
       await axios.put(`http://localhost:3000/users/${id}`, updateData);
       message.success("Cập nhật người dùng thành công!");
-      navigate("/admin/user");
+      navigate("/admin/users");
     } catch (error) {
       console.error("Lỗi khi cập nhật người dùng:", error);
       message.error("Cập nhật người dùng thất bại!");
@@ -90,7 +90,7 @@ const EditUsers = () => {
         lockUntil: lockUntil.toISOString(),
       });
       message.success(`Khóa tài khoản thành công trong ${days} ngày!`);
-      navigate("/admin/user");
+      navigate("/admin/users");
     } catch (error) {
       console.error("Lỗi khi khóa tài khoản:", error);
       message.error("Khóa tài khoản thất bại!");
@@ -131,7 +131,7 @@ const EditUsers = () => {
       }}
     >
       <div style={{ textAlign: "center", marginBottom: "16px" }}>
-        <Link to="/admin/user">
+        <Link to="/admin/users">
           <Button type="link" style={{ fontSize: "16px", color: "#1890ff" }}>
             ⬅ Quay lại danh sách người dùng
           </Button>

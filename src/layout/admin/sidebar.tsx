@@ -42,10 +42,10 @@ const SidebarAdmin = () => {
     const userMenu = (
         <Menu>
             <Menu.Item>
-                <Link to="/admin/user">Danh sách</Link>
+                <Link to="/admin/users">Danh sách</Link>
             </Menu.Item>
             <Menu.Item>
-                <Link to="/admin/adduser">Thêm mới</Link>
+                <Link to="/admin/addusers">Thêm mới</Link>
             </Menu.Item>
         </Menu>
     );

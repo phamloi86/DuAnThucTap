@@ -25,9 +25,9 @@ export default function App() {
       { path: 'addcategory', element: <AddCategory /> },
       { path: 'editcategory/:id', element: <EditCategory /> },
       //người dùng
-      { path: 'user', element: <ListUser /> },
-      { path: 'adduser', element: <AddUser /> },
-      { path: 'edituser/:id', element: <EditUser /> },
+      { path: 'users', element: <ListUser /> },
+      { path: 'addusers', element: <AddUser /> },
+      { path: 'editusers/:id', element: <EditUser /> },
       ],
     },
     // {path:'',element:<ClientLayout/>, children :[
