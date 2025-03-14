@@ -56,7 +56,7 @@ const ListUser = () => {
       key: "actions",
       render: (_: any, record: Iuser) => (
         <Space>
-          <Link to={`/admin/edituser/${record.id}`}>
+          <Link to={`/admin/editusers/${record.id}`}>
             <Button type="primary">✏ Sửa</Button>
           </Link>
         </Space>
@@ -80,7 +80,7 @@ const ListUser = () => {
         Quản lý người dùng
       </Title>
       <div style={{ textAlign: "center", marginBottom: "16px" }}>
-        <Link to="/admin/adduser">
+        <Link to="/admin/addusers">
           <Button type="link" style={{ fontSize: "16px", fontWeight: "bold" }}>
             ➕ Thêm người dùng
           </Button>

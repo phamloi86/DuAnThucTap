@@ -119,13 +119,60 @@
   ],
   "users": [
     {
-      "id": 1,
-      "username": "user1",
-      "email": "user1@example.com",
-      "phone": "0123456789",
+      "email": "admin@example.com",
+      "password": "$2a$10$2HxHP9ktcHKfXgTZtO4fT.EnIjdHkED7l.ndGKH0xAfIitnzciFsO",
+      "username": "Duong",
+      "phone": "0941097302",
+      "role": "admin",
+      "id": 1
+    },
+    {
+      "email": "client123@gmail.com",
+      "password": "$2a$10$Ga4bEYveOmGHZsxl.aKcG.efNt7Q7VlTAEz/bKRf1i9eNoCdM21Aq",
+      "username": "client123",
+      "phone": "9090909090",
       "role": "client",
-      "isLocked": true,
-      "lockUntil": "2025-04-13T22:03:37.842Z"
+      "id": 2
+    },
+    {
+      "email": "duongphph53276@gmail.com",
+      "password": "$2a$10$h8PvDKwcYiW4zz6Z7hKpveXHJlWkahXfZP0PD33deHfvcwo19kSH6",
+      "username": "Duong",
+      "phone": "0941097302",
+      "role": "client",
+      "id": 3
+    },
+    {
+      "email": "dev@example.com",
+      "password": "$2a$10$0Ty291fZnWeaxtm5ZFMjrOFfZJdhJnQ3i6YmFfR/vmTg3OjL26moy",
+      "username": "dev@example.com",
+      "phone": "0123123123",
+      "role": "admin",
+      "id": 4
+    },
+    {
+      "email": "admin123@example.com",
+      "password": "$2a$10$0JDzLOUuxiUeScEVv8vTd.Cjqnx04kflD4OyTEwQhWz1d740o6Apu",
+      "username": "admin123@example.com",
+      "phone": "1234567522",
+      "role": "admin",
+      "id": 5
+    },
+    {
+      "email": "duongphph56@gmail.com",
+      "password": "$2a$10$3F46sLtJxQMzec2cFUQZlupXiBE0O1deQTbK6KvX/WRD/yO8Y39Em",
+      "username": "admin@example.com",
+      "phone": "0941097302",
+      "role": "admin",
+      "id": 6
+    },
+    {
+      "email": "duong123@gmail.com",
+      "password": "$2a$10$6R.esXKEGExncI7Aromk9u4DG35G9GhNZ1860NNUkqMVrfZrXgxD.",
+      "username": "duong123@gmail.com",
+      "phone": "0941097302",
+      "role": "admin",
+      "id": 7
     }
   ]
 }
