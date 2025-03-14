@@ -39,6 +39,17 @@ const SidebarAdmin = () => {
         </Menu>
     );
 
+    const userMenu = (
+        <Menu>
+            <Menu.Item>
+                <Link to="/admin/user">Danh sách</Link>
+            </Menu.Item>
+            <Menu.Item>
+                <Link to="/admin/adduser">Thêm mới</Link>
+            </Menu.Item>
+        </Menu>
+    );
+
     return (
         <Sider width={250} className="h-screen bg-white p-4 shadow-md">
             <Menu mode="vertical" className="text-center" defaultSelectedKeys={['1']}>
@@ -47,17 +58,22 @@ const SidebarAdmin = () => {
                 </Menu.Item>
                 <Menu.Item key="2" className="font-bold">
                     <Dropdown overlay={productMenu} trigger={["click"]}>
-                        <Button type="text">Sản phẩm <DownOutlined /></Button>
+                        <Button type="text">Quản lý sản phẩm <DownOutlined /></Button>
                     </Dropdown>
                 </Menu.Item>
                 <Menu.Item key="3" className="font-bold">
                     <Dropdown overlay={orderMenu} trigger={["click"]}>
-                        <Button type="text">Đơn hàng <DownOutlined /></Button>
+                        <Button type="text">Quản lý đơn hàng <DownOutlined /></Button>
                     </Dropdown>
                 </Menu.Item>
                 <Menu.Item key="4" className="font-bold">
                     <Dropdown overlay={categoryMenu} trigger={["click"]}>
-                        <Button type="text">Danh mục <DownOutlined /></Button>
+                        <Button type="text">Quản lý danh mục <DownOutlined /></Button>
+                    </Dropdown>
+                </Menu.Item>
+                <Menu.Item key="5" className="font-bold">
+                    <Dropdown overlay={userMenu} trigger={["click"]}>
+                        <Button type="text">Quản lý người dùng <DownOutlined /></Button>
                     </Dropdown>
                 </Menu.Item>
             </Menu>

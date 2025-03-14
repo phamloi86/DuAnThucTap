@@ -5,7 +5,6 @@
       "name": "Sản phẩm 1",
       "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
       "price": 99999,
-      "category": "áo",
       "description": "Áo thun cotton mềm mại, thoáng mát."
     },
     {
@@ -13,7 +12,6 @@
       "name": "Sản phẩm 2",
       "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
       "price": 200000,
-      "category": "quần",
       "description": "Áo thun cotton mềm mại, thoáng mát."
     },
     {
@@ -21,7 +19,6 @@
       "name": "phung Duong123",
       "image": "https://cdn.vuahanghieu.com/unsafe/0x900/left/top/smart/filters:quality(90)/https://admin.vuahanghieu.com/upload/product/2024/09/bup-be-baby-three-v3-vinyl-plush-dinosaur-mau-xanh-la-66f4e3b343e26-26092024113147.jpg",
       "price": 123312,
-      "category": "giày",
       "description": "Áo thun cotton mềm mại, thoáng mát."
     },
     {
@@ -29,28 +26,24 @@
       "image": "https://sieuthidaisymart.com/wp-content/uploads/2024/12/blindbox-tui-mu-Baby-Three-400-7.jpg",
       "price": 123,
       "id": 7,
-      "category": "giày",
       "description": "Áo thun cotton mềm mại, thoáng mát."
     },
     {
       "name": "abcd",
       "image": "https://product.hstatic.net/200000159347/product/img_1440_969e269f07b3404185888d963a89a829_master.jpeg",
       "price": 123231,
-      "category": "quần",
       "id": 8
     },
     {
       "name": "abcde",
       "image": "https://bizweb.dktcdn.net/100/489/014/products/467126997-581473647581768-8706382301828698230-n.jpg?v=1732318847970",
       "price": 1232312,
-      "category": "Giày",
       "id": 9
     },
     {
       "name": "abcdef",
       "image": "https://sieuthidaisymart.com/wp-content/uploads/2024/12/blindbox-tui-mu-Baby-Three-400-8.jpg",
       "price": 12323122,
-      "category": "Quần",
       "id": 10
     },
     {
@@ -80,5 +73,59 @@
       "id": 16
     }
   ],
-  "users": []
+  "categories": [
+    {
+      "id": 1,
+      "name": "Điện thoại",
+      "slug": "dien-thoai",
+      "parentId": null
+    },
+    {
+      "id": 2,
+      "name": "Laptop",
+      "slug": "laptop",
+      "parentId": null
+    },
+    {
+      "id": 4,
+      "name": "Samsung",
+      "slug": "samsung",
+      "parentId": 7
+    },
+    {
+      "id": 5,
+      "name": "MacBook",
+      "slug": "macbook",
+      "parentId": 2
+    },
+    {
+      "id": 6,
+      "name": "Dell",
+      "slug": "dell",
+      "parentId": 2
+    },
+    {
+      "name": "phung Duong",
+      "slug": "duong",
+      "parentId": null,
+      "id": 7
+    },
+    {
+      "name": "Duong con",
+      "slug": "conduong",
+      "parentId": 7,
+      "id": 8
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "user1",
+      "email": "user1@example.com",
+      "phone": "0123456789",
+      "role": "client",
+      "isLocked": true,
+      "lockUntil": "2025-04-13T22:03:37.842Z"
+    }
+  ]
 }
