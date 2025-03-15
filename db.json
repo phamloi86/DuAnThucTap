@@ -78,13 +78,15 @@
       "id": 1,
       "name": "Điện thoại",
       "slug": "dien-thoai",
-      "parentId": null
+      "parentId": null,
+      "active":true
     },
     {
       "id": 2,
       "name": "Laptop",
       "slug": "laptop",
-      "parentId": null
+      "parentId": null,
+      "active":true
     },
     {
       "id": 4,
@@ -148,7 +150,9 @@
       "username": "dev@example.com",
       "phone": "0123123123",
       "role": "admin",
-      "id": 4
+      "id": 4,
+      "isLocked": false,
+      "lockUntil": null
     },
     {
       "email": "admin123@example.com",
@@ -179,10 +183,10 @@
       "email": "demonxxx@gmail.com",
       "phone": "0941097302",
       "role": "client",
-      "password": "$2a$10$GzACDdJvEg2wQ3Pth6zO9Ou4B6VcltCMryIFu4cBG0KtwEOCnrZJq",
+      "password": "$2a$10$QFBZL2nDW838s4IE3D1AoOX9AeQS/YfCPdkm.6M1tGV5rS.uPr5oG",
       "id": 8,
       "isLocked": true,
-      "lockUntil": "2025-03-18T01:20:19.379Z"
+      "lockUntil": "2026-03-15T05:34:01.009Z"
     }
   ]
 }
