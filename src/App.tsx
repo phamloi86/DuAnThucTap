@@ -1,4 +1,3 @@
-// src/App.tsx
 import { useRoutes } from "react-router-dom";
 import ListProducts from "./components/admin/ListProducts";
 import AdminLayout from "./layout/admin";
@@ -17,10 +16,14 @@ import { AuthProvider } from "../src/components/auth/AuthContext";
 import ProtectedRoute from "../src/components/auth/ProtectedRoute";
 import Register from "./components/auth/Register";
 import RegisterAdmin from "./components/auth/RegisterAdmin";
+import ClientLayout from "./layout/client"; // Import layout mới
 
 export default function App() {
   const routes = useRoutes([
-    {path: "/admin",element: (
+    // Route Admin (Chỉ dành cho Admin)
+    {
+      path: "/admin",
+      element: (
         <ProtectedRoute adminOnly>
           <AdminLayout />
         </ProtectedRoute>
@@ -38,9 +41,19 @@ export default function App() {
         { path: "editusers/:id", element: <EditUser /> },
       ],
     },
-    { path: "/", element: <Home /> },
-    { path: "/login", element: <Login /> },
-    { path: "/register", element: <Register /> },
+
+    // Route Client (Dành cho người dùng)
+    {
+      path: "/",
+      element: <ClientLayout />, // Áp dụng layout client cho user
+      children: [
+        { path: "", element: <Home /> },
+        { path: "login", element: <Login /> },
+        { path: "register", element: <Register /> },
+      ],
+    },
+
+    // Route ẩn dành cho admin đăng ký
     { path: "/im_dev__do_u_know_that", element: <RegisterAdmin /> },
   ]);
 
