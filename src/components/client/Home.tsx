@@ -12,13 +12,13 @@ const Home = () => {
       <Title level={2}>Chào mừng đến với trang chủ</Title>
       {user ? (
         <div>
-          <p>Xin chào, {user.username} ({user.role})</p>
+          <p>Xin chào, {user.username}</p>
           <Button type="primary" onClick={logout}>
             Đăng xuất
           </Button>
         </div>
       ) : (
-        <p>Vui lòng đăng nhập để tiếp tục.</p>
+        <p>Vui lòng <a href="/register">Đăng ký</a> Hoặc <a href="/login">Đăng nhập</a> để tiếp tục.</p>
       )}
     </div>
   );

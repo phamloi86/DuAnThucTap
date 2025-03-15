@@ -2,9 +2,11 @@ import { IproductForm } from "../../interfaces/product";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { Card, Form, Input, Button, Typography, message } from "antd";
+import { Card, Form, Input, Button, Typography, Select, message } from "antd";
+import { useEffect, useState } from "react";
 
 const { Title } = Typography;
+const { Option } = Select;
 
 const AddProducts = () => {
   const navigate = useNavigate();
@@ -13,6 +15,16 @@ const AddProducts = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IproductForm>();
+
+  // Lưu danh sách danh mục
+  const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
+
+  // Lấy danh mục từ API hoặc JSON
+  useEffect(() => {
+    axios.get("http://localhost:3000/categories")
+      .then((res) => setCategories(res.data))
+      .catch(() => message.error("Lỗi khi tải danh mục!"));
+  }, []);
 
   const onSubmit = async (data: IproductForm) => {
     try {
@@ -64,6 +76,24 @@ const AddProducts = () => {
             name="description"
             control={control}
             render={({ field }) => <Input.TextArea {...field} placeholder="Nhập mô tả sản phẩm" rows={4} />}
+          />
+        </Form.Item>
+
+        {/* Chọn danh mục */}
+        <Form.Item label="Danh mục sản phẩm">
+          <Controller
+            name="categoryId"
+            control={control}
+            rules={{ required: "Vui lòng chọn danh mục" }}
+            render={({ field }) => (
+              <Select {...field} placeholder="Chọn danh mục">
+                {categories.map((cat) => (
+                  <Option key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </Option>
+                ))}
+              </Select>
+            )}
           />
         </Form.Item>
 

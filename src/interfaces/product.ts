@@ -7,4 +7,11 @@ export interface Iproduct {
     description: string; // Thêm trường mô tả ngắn
 }
 
-export type IproductForm = Omit<Iproduct,"id">
+export interface IproductForm {
+    name: string;
+    image: string;
+    price: number;
+    description: string;
+    categoryId: number; // Thêm categoryId vào đây
+  }
+  

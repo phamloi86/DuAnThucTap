@@ -11,6 +11,10 @@ interface ProtectedRouteProps {
 // src/components/ProtectedRoute.tsx
 const ProtectedRoute = ({ children, adminOnly = false }: ProtectedRouteProps) => {
     const { user } = useAuth();
+
+    if (user === null) {
+      return <div>Đang tải...</div>;
+    }
   
     console.log("User trong ProtectedRoute:", user); // Kiểm tra user
   

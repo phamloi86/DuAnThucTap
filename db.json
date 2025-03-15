@@ -71,6 +71,14 @@
       "price": "555",
       "description": "555",
       "id": 16
+    },
+    {
+      "name": "abdc",
+      "image": "https://th.bing.com/th/id/OIP.mwXBsgCgcB0DbYvS5UM1oQHaPO?rs=1&pid=ImgDetMain",
+      "price": "123",
+      "description": "123",
+      "categoryId": 1,
+      "id": 17
     }
   ],
   "categories": [
@@ -173,6 +181,16 @@
       "phone": "0941097302",
       "role": "admin",
       "id": 7
+    },
+    {
+      "email": "demonxxx@gmail.com",
+      "password": "$2a$10$QaOoxxl0YRjfXpj7EtqZ2.5lIoGKra.rzkM/xu4IZPbydy4CdeCzu",
+      "username": "demonxxx",
+      "phone": "0941097302",
+      "role": "client",
+      "id": 8,
+      "isLocked": true,
+      "lockUntil": "2025-03-18T00:17:48.938Z"
     }
   ]
 }

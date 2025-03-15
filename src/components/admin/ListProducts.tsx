@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Iproduct } from "../../interfaces/product";
+import { Icategory } from "../../interfaces/category";
 import axios from "axios";
 import { Table, Button, Typography, Modal, Space, Image } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
@@ -10,13 +11,21 @@ const { Title } = Typography;
 
 const ListProducts = () => {
   const [products, setProducts] = useState<Iproduct[]>([]);
+  const [categories, setCategories] = useState<Icategory[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const { data } = await axios("http://localhost:3000/products");
+      const { data } = await axios.get("http://localhost:3000/products");
       setProducts(data);
     };
+
+    const fetchCategories = async () => {
+      const { data } = await axios.get("http://localhost:3000/categories");
+      setCategories(data);
+    };
+
     fetchProducts();
+    fetchCategories();
   }, []);
 
   const removeItem = async (id: number | string) => {
@@ -56,8 +65,12 @@ const ListProducts = () => {
     },
     {
       title: "Danh mục",
-      dataIndex: "category",
+      dataIndex: "categoryId",
       key: "category",
+      render: (categoryId: number) => {
+        const category = categories.find((cat) => cat.id === categoryId);
+        return category ? category.name : "Không có danh mục";
+      },
     },
     {
       title: "Mô tả",
