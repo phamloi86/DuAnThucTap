@@ -5,7 +5,8 @@
       "name": "Sản phẩm 1",
       "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
       "price": 99999,
-      "description": "Áo thun cotton mềm mại, thoáng mát."
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 1
     },
     {
       "id": 2,
@@ -183,14 +184,14 @@
       "id": 7
     },
     {
-      "email": "demonxxx@gmail.com",
-      "password": "$2a$10$QaOoxxl0YRjfXpj7EtqZ2.5lIoGKra.rzkM/xu4IZPbydy4CdeCzu",
       "username": "demonxxx",
+      "email": "demonxxx@gmail.com",
       "phone": "0941097302",
       "role": "client",
+      "password": "$2a$10$GzACDdJvEg2wQ3Pth6zO9Ou4B6VcltCMryIFu4cBG0KtwEOCnrZJq",
       "id": 8,
       "isLocked": true,
-      "lockUntil": "2025-03-18T00:17:48.938Z"
+      "lockUntil": "2025-03-18T01:20:19.379Z"
     }
   ]
 }

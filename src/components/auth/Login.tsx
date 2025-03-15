@@ -1,12 +1,13 @@
 // src/components/auth/Login.tsx
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Thêm Link cho đăng ký
 import axios from "axios";
-import { Form, Input, Button, Card, Typography, message } from "antd";
+import { Form, Input, Button, Card, Typography, message, Space } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons"; // Thêm icons
 import { useAuth } from "./AuthContext";
 import bcrypt from "bcryptjs";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -71,38 +72,133 @@ const Login = () => {
   };
 
   return (
-    <Card
-      title={<Title level={3} style={{ textAlign: "center" }}>Đăng Nhập</Title>}
-      style={{ maxWidth: 400, margin: "50px auto", borderRadius: "8px" }}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)", // Gradient nền
+      }}
     >
-      <Form layout="vertical" onFinish={onFinish}>
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: "Vui lòng nhập email!" }]}
+      <Card
+        style={{
+          width: 400,
+          borderRadius: 16,
+          boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)", // Đổ bóng đẹp
+          background: "#fff",
+          padding: "20px",
+        }}
+        cover={
+          <div
+            style={{
+              textAlign: "center",
+              padding: "20px 0",
+              background: "rgba(255, 255, 255, 0.1)",
+              borderRadius: "16px 16px 0 0",
+            }}
+          >
+            <Title
+              level={2}
+              style={{
+                color: "#1890ff",
+                margin: 0,
+                fontWeight: 700,
+                textTransform: "uppercase",
+              }}
+            >
+              Đăng Nhập
+            </Title>
+            <Text style={{ color: "#666" }}>
+              Chào mừng bạn quay lại!
+            </Text>
+          </div>
+        }
+      >
+        <Form
+          layout="vertical"
+          onFinish={onFinish}
+          style={{ padding: "0 10px" }}
         >
-          <Input placeholder="Nhập email" />
-        </Form.Item>
+          <Form.Item
+            name="email"
+            rules={[{ required: true, message: "Vui lòng nhập email!" }]}
+          >
+            <Input
+              prefix={<UserOutlined style={{ color: "#1890ff" }} />}
+              placeholder="Email"
+              size="large"
+              style={{
+                borderRadius: 8,
+                padding: "10px",
+              }}
+            />
+          </Form.Item>
 
-        <Form.Item
-          label="Mật khẩu"
-          name="password"
-          rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
-        >
-          <Input.Password placeholder="Nhập mật khẩu" />
-        </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
+          >
+            <Input.Password
+              prefix={<LockOutlined style={{ color: "#1890ff" }} />}
+              placeholder="Mật khẩu"
+              size="large"
+              style={{
+                borderRadius: 8,
+                padding: "10px",
+              }}
+            />
+          </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit" block loading={loading}>
-            Đăng nhập
-          </Button>
-        </Form.Item>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              block
+              loading={loading}
+              size="large"
+              style={{
+                borderRadius: 8,
+                height: 48,
+                background: "#1890ff",
+                border: "none",
+                fontWeight: 600,
+                transition: "all 0.3s",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = "#40a9ff")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = "#1890ff")
+              }
+            >
+              Đăng nhập
+            </Button>
+          </Form.Item>
 
-        <div style={{ textAlign: "center" }}>
-          <a href="/register">Chưa có tài khoản? Đăng ký ngay</a>
-        </div>
-      </Form>
-    </Card>
+          <Space
+            direction="vertical"
+            size="middle"
+            style={{ width: "100%", textAlign: "center" }}
+          >
+            <Link to="/register">
+              <Text
+                style={{
+                  color: "#1890ff",
+                  fontWeight: 500,
+                  textDecoration: "underline",
+                }}
+              >
+                Chưa có tài khoản? Đăng ký ngay
+              </Text>
+            </Link>
+            <a href="#">
+              <Text style={{ color: "#666" }}>Quên mật khẩu?</Text>
+            </a>
+          </Space>
+        </Form>
+      </Card>
+    </div>
   );
 };
 
