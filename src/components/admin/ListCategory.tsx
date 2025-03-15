@@ -53,6 +53,16 @@ const ListCategory = () => {
     },
     { title: "Slug", dataIndex: "slug", key: "slug" },
     {
+      title: "Trạng thái",
+      dataIndex: "active",
+      key: "active",
+      render: (active: boolean) => (
+        <span style={{ color: active ? "green" : "red", fontWeight: "bold" }}>
+          {active ? "Hiển thị" : "Ẩn"}
+        </span>
+      ),
+    },
+    {
       title: "Hành động",
       key: "actions",
       render: (_: any, record: Icategory) => (
@@ -65,6 +75,7 @@ const ListCategory = () => {
       ),
     },
   ];
+  
 
   return (
     <div style={{ maxWidth: "1000px", margin: "auto", padding: "24px", background: "white", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)", marginTop: "24px" }}>

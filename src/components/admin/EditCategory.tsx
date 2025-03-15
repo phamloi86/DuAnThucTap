@@ -132,6 +132,21 @@ const EditCategory = () => {
           />
         </Form.Item>
 
+        {/* Trạng thái */}
+        <Form.Item label="Trạng thái">
+          <Controller
+            name="active"
+            control={control}
+            render={({ field }) => (
+              <Select {...field} placeholder="Chọn trạng thái">
+                <Option value={true}>Hiển thị</Option>
+                <Option value={false}>Ẩn</Option>
+              </Select>
+            )}
+          />
+        </Form.Item>
+
+
         {/* Danh mục cha */}
         <Form.Item label="Danh mục cha (nếu có)">
           <Controller
