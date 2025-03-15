@@ -5,10 +5,6 @@ const Dashboard = () => {
     <>
     <div>Dashboard Home</div>
     <div>ABCXYZ</div>
-    <div>ABCXYZ</div>
-    <div>ABCXYZ</div>
-    <div>ABCXYZ</div>
-    <div>ABCXYZ</div>
 
     </>
   )
