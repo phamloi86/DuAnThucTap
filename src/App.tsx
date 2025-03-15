@@ -17,6 +17,8 @@ import ProtectedRoute from "../src/components/auth/ProtectedRoute";
 import Register from "./components/auth/Register";
 import RegisterAdmin from "./components/auth/RegisterAdmin";
 import ClientLayout from "./layout/client"; // Import layout mới
+import Cart from "./components/client/Cart";
+import GoldPriceTable from "./components/client/GoldPrice";
 
 export default function App() {
   const routes = useRoutes([
@@ -50,6 +52,9 @@ export default function App() {
         { path: "", element: <Home /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
+        {path:"cart", element:<Cart/>},
+        {path:"goldprice", element:<GoldPriceTable/>}
+
       ],
     },
 

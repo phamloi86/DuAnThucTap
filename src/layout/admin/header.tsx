@@ -16,7 +16,7 @@ const HeaderAdmin = () => {
       <Row justify="space-between" align="middle">
         {/* Logo */}
         <Col>
-          <Text strong style={{ fontSize: "18px" }}>Duongphph53276</Text>
+          <Text strong style={{ fontSize: "18px" }}>{user?.username || "Admin"}</Text>
         </Col>
 
         {/* Ô tìm kiếm */}
