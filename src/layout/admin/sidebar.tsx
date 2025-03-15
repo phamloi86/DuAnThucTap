@@ -48,17 +48,6 @@ const SidebarAdmin = () => {
     </Menu>
   );
 
-  const orderMenu = (
-    <Menu>
-      <Menu.Item>
-        <Link to="/admin/orders">Danh sách</Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/admin/addorders">Thêm mới</Link>
-      </Menu.Item>
-    </Menu>
-  );
-
   const categoryMenu = (
     <Menu>
       <Menu.Item>
@@ -99,11 +88,11 @@ const SidebarAdmin = () => {
           </Dropdown>
         </Menu.Item>
         <Menu.Item key="3" className="font-bold">
-          <Dropdown overlay={orderMenu} trigger={["click"]}>
+          <a href="/admin/orders">
             <Button type="text">
-              Quản lý đơn hàng <DownOutlined />
+              Quản lý đơn hàng  
             </Button>
-          </Dropdown>
+            </a>
         </Menu.Item>
         <Menu.Item key="4" className="font-bold">
           <Dropdown overlay={categoryMenu} trigger={["click"]}>
