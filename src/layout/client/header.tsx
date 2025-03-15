@@ -8,21 +8,31 @@ import axios from "axios";
 const { Header } = Layout;
 const { Text } = Typography;
 
+// Hàm loại bỏ dấu tiếng Việt
+const removeAccents = (str: string) => {
+  return str
+    .normalize("NFD") // Chuẩn hóa chuỗi thành dạng NFD (tách dấu ra khỏi ký tự)
+    .replace(/[\u0300-\u036f]/g, "") // Loại bỏ các ký tự dấu
+    .replace(/đ/g, "d") // Thay "đ" thành "d"
+    .replace(/Đ/g, "D"); // Thay "Đ" thành "D"
+};
+
 const HeaderClient = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState<string>("");
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
 
-  // Danh sách sản phẩm mẫu (có thể thay bằng API call)
+  // Hàm lấy danh sách sản phẩm và lọc theo từ khóa
   const fetchProducts = async (query: string) => {
     try {
-      // Giả sử API trả về danh sách sản phẩm từ endpoint "/products"
       const { data } = await axios.get("http://localhost:3000/products");
+      const normalizedQuery = removeAccents(query.toLowerCase()); // Chuẩn hóa từ khóa tìm kiếm
       const filteredProducts = data
-        .filter((product: any) =>
-          product.name.toLowerCase().includes(query.toLowerCase())
-        )
+        .filter((product: any) => {
+          const normalizedProductName = removeAccents(product.name.toLowerCase());
+          return normalizedProductName.includes(normalizedQuery);
+        })
         .map((product: any) => ({
           value: product.id.toString(),
           label: `${product.name} - ${product.price.toLocaleString("vi-VN")} VNĐ`,
@@ -45,7 +55,7 @@ const HeaderClient = () => {
 
   // Xử lý khi chọn một sản phẩm từ kết quả tìm kiếm
   const handleSelect = (value: string) => {
-    navigate(`/product/${value}`); // Chuyển hướng đến trang chi tiết sản phẩm
+    navigate(`/product/${value}`);
     setSearchValue("");
     setOptions([]);
   };
@@ -73,12 +83,12 @@ const HeaderClient = () => {
           <AutoComplete
             value={searchValue}
             options={options}
-            style={{ width: "100%", maxWidth: 500, }}
+            style={{ width: "100%", maxWidth: 500 }}
             onSearch={handleSearchChange}
             onSelect={handleSelect}
           >
             <Input
-              prefix={<SearchOutlined style={{color: "#D4AF37" }} />}
+              prefix={<SearchOutlined style={{ color: "#D4AF37" }} />}
               style={{ borderRadius: "6px" }}
               size="large"
             />
