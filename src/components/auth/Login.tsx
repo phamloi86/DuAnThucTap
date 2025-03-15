@@ -77,7 +77,7 @@ const Login = () => {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #1a1a1a 0%, #4a2c00 100%)", // Gradient đen - vàng đậm
+        background: "linear-gradient(135deg, #1a1a1a 0%, #4a2c00 100%)",// Gradient đen - vàng đậm
       }}
     >
       <Card
