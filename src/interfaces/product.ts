@@ -5,6 +5,7 @@ export interface Iproduct {
     price:number,
     category: string;
     description: string; // Thêm trường mô tả ngắn
+    inStock:boolean
 }
 
 export interface IproductForm {
@@ -13,5 +14,6 @@ export interface IproductForm {
     price: number;
     description: string;
     categoryId: number; // Thêm categoryId vào đây
+    inStock:boolean
   }
   

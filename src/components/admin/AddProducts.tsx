@@ -14,12 +14,14 @@ const AddProducts = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<IproductForm>();
+  } = useForm<IproductForm>({
+    defaultValues: {
+      inStock: true, // Mặc định là "Còn hàng"
+    },
+  });
 
-  // Lưu danh sách danh mục
   const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
 
-  // Lấy danh mục từ API hoặc JSON
   useEffect(() => {
     axios.get("http://localhost:3000/categories")
       .then((res) => setCategories(res.data))
@@ -92,6 +94,20 @@ const AddProducts = () => {
                     {cat.name}
                   </Option>
                 ))}
+              </Select>
+            )}
+          />
+        </Form.Item>
+
+        {/* Trạng thái còn hàng */}
+        <Form.Item label="Trạng thái">
+          <Controller
+            name="inStock"
+            control={control}
+            render={({ field }) => (
+              <Select {...field} placeholder="Chọn trạng thái">
+                <Option value={true}>Còn hàng</Option>
+                <Option value={false}>Hết hàng</Option>
               </Select>
             )}
           />

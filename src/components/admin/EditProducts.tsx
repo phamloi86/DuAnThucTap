@@ -20,7 +20,6 @@ const EditProducts = () => {
   } = useForm<IproductForm>();
   const [categories, setCategories] = useState<{ id: number; name: string }[]>([]);
 
-  // Lấy dữ liệu sản phẩm và danh mục
   useEffect(() => {
     const getProductById = async () => {
       try {
@@ -130,6 +129,20 @@ const EditProducts = () => {
                     {cat.name}
                   </Option>
                 ))}
+              </Select>
+            )}
+          />
+        </Form.Item>
+
+        {/* Trạng thái còn hàng */}
+        <Form.Item label="Trạng thái">
+          <Controller
+            name="inStock"
+            control={control}
+            render={({ field }) => (
+              <Select {...field} placeholder="Chọn trạng thái">
+                <Option value={true}>Còn hàng</Option>
+                <Option value={false}>Hết hàng</Option>
               </Select>
             )}
           />

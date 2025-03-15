@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Iproduct } from "../../interfaces/product";
 import { Icategory } from "../../interfaces/category";
 import axios from "axios";
-import { Table, Button, Typography, Modal, Space, Image } from "antd";
+import { Table, Button, Typography, Modal, Space, Image, Tag } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 const { confirm } = Modal;
@@ -77,6 +77,16 @@ const ListProducts = () => {
       dataIndex: "description",
       key: "description",
       render: (desc: string) => desc || "Chưa có mô tả",
+    },
+    {
+      title: "Trạng thái",
+      dataIndex: "inStock",
+      key: "inStock",
+      render: (inStock: boolean) => (
+        <Tag color={inStock ? "green" : "red"}>
+          {inStock ? "Còn hàng" : "Hết hàng"}
+        </Tag>
+      ),
     },
     {
       title: "Hành động",
