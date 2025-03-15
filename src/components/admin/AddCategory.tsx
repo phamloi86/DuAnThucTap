@@ -112,6 +112,22 @@ const AddCategory = () => {
           />
         </Form.Item>
 
+        {/* Trạng thái */}
+        <Form.Item label="Trạng thái">
+          <Controller
+            name="active"
+            control={control}
+            defaultValue={true} // Mặc định danh mục mới là "đang hoạt động"
+            render={({ field }) => (
+              <Select {...field} placeholder="Chọn trạng thái">
+                <Option value={true}>Hiển thị</Option>
+                <Option value={false}>Ẩn</Option>
+              </Select>
+            )}
+          />
+        </Form.Item>
+
+
         {/* Danh mục cha */}
         <Form.Item label="Danh mục cha (nếu có)">
           <Controller
