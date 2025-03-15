@@ -10,7 +10,7 @@ const FooterClient = () => {
       <Row gutter={32}>
         {/* Cột 1: Logo + Mô tả */}
         <Col span={8}>
-          <Title level={3} style={{ color: "#D4AF37" }}>GoldShop</Title>
+          <Title level={3} style={{ color: "#D4AF37" }}>GOLD WORLD</Title>
           <Text style={{ color: "#d9d9d9" }}>
             Cửa hàng mua bán vàng uy tín, chất lượng cao cấp.
           </Text>

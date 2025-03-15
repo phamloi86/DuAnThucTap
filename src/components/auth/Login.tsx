@@ -1,9 +1,9 @@
 // src/components/auth/Login.tsx
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom"; // Thêm Link cho đăng ký
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { Form, Input, Button, Card, Typography, message, Space } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons"; // Thêm icons
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useAuth } from "./AuthContext";
 import bcrypt from "bcryptjs";
 
@@ -14,7 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
   const { user, login } = useAuth();
 
-  // Kiểm tra nếu đã đăng nhập thì chuyển hướng
   useEffect(() => {
     if (user) {
       if (user.role === "admin") {
@@ -78,15 +77,15 @@ const Login = () => {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)", // Gradient nền
+        background: "linear-gradient(135deg, #1a1a1a 0%, #4a2c00 100%)", // Gradient đen - vàng đậm
       }}
     >
       <Card
         style={{
           width: 400,
           borderRadius: 16,
-          boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)", // Đổ bóng đẹp
-          background: "#fff",
+          boxShadow: "0 8px 24px rgba(0, 0, 0, 0.3)",
+          background: "#fffef7", // Màu trắng ngà nhẹ nhàng
           padding: "20px",
         }}
         cover={
@@ -94,14 +93,14 @@ const Login = () => {
             style={{
               textAlign: "center",
               padding: "20px 0",
-              background: "rgba(255, 255, 255, 0.1)",
+              background: "rgba(255, 215, 0, 0.1)", // Vàng nhạt trong suốt
               borderRadius: "16px 16px 0 0",
             }}
           >
             <Title
               level={2}
               style={{
-                color: "#1890ff",
+                color: "#d4af37", // Vàng ánh kim
                 margin: 0,
                 fontWeight: 700,
                 textTransform: "uppercase",
@@ -109,7 +108,7 @@ const Login = () => {
             >
               Đăng Nhập
             </Title>
-            <Text style={{ color: "#666" }}>
+            <Text style={{ color: "#4a4a4a" }}>
               Chào mừng bạn quay lại!
             </Text>
           </div>
@@ -125,12 +124,13 @@ const Login = () => {
             rules={[{ required: true, message: "Vui lòng nhập email!" }]}
           >
             <Input
-              prefix={<UserOutlined style={{ color: "#1890ff" }} />}
+              prefix={<UserOutlined style={{ color: "#d4af37" }} />}
               placeholder="Email"
               size="large"
               style={{
                 borderRadius: 8,
                 padding: "10px",
+                borderColor: "#d4af37",
               }}
             />
           </Form.Item>
@@ -140,12 +140,13 @@ const Login = () => {
             rules={[{ required: true, message: "Vui lòng nhập mật khẩu!" }]}
           >
             <Input.Password
-              prefix={<LockOutlined style={{ color: "#1890ff" }} />}
+              prefix={<LockOutlined style={{ color: "#d4af37" }} />}
               placeholder="Mật khẩu"
               size="large"
               style={{
                 borderRadius: 8,
                 padding: "10px",
+                borderColor: "#d4af37",
               }}
             />
           </Form.Item>
@@ -160,16 +161,16 @@ const Login = () => {
               style={{
                 borderRadius: 8,
                 height: 48,
-                background: "#1890ff",
+                background: "#d4af37", // Màu vàng kim loại
                 border: "none",
                 fontWeight: 600,
                 transition: "all 0.3s",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "#40a9ff")
+                (e.currentTarget.style.background = "#e6c34c")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "#1890ff")
+                (e.currentTarget.style.background = "#d4af37")
               }
             >
               Đăng nhập
@@ -184,7 +185,7 @@ const Login = () => {
             <Link to="/register">
               <Text
                 style={{
-                  color: "#1890ff",
+                  color: "#d4af37",
                   fontWeight: 500,
                   textDecoration: "underline",
                 }}
@@ -193,7 +194,7 @@ const Login = () => {
               </Text>
             </Link>
             <a href="#">
-              <Text style={{ color: "#666" }}>Quên mật khẩu?</Text>
+              <Text style={{ color: "#4a4a4a" }}>Quên mật khẩu?</Text>
             </a>
           </Space>
         </Form>

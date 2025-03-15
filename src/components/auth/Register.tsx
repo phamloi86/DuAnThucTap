@@ -1,6 +1,6 @@
 // src/components/auth/Register.tsx
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom"; // Thêm Link cho liên kết
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { Form, Input, Button, Card, Typography, message, Space } from "antd";
 import {
@@ -8,7 +8,7 @@ import {
   MailOutlined,
   PhoneOutlined,
   LockOutlined,
-} from "@ant-design/icons"; // Thêm icons
+} from "@ant-design/icons";
 import { useAuth } from "./AuthContext";
 
 const { Title, Text } = Typography;
@@ -18,7 +18,6 @@ const Register = () => {
   const navigate = useNavigate();
   const { user, login } = useAuth();
 
-  // Kiểm tra nếu đã đăng nhập thì chuyển hướng
   useEffect(() => {
     if (user) {
       if (user.role === "admin") {
@@ -60,15 +59,15 @@ const Register = () => {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)", // Gradient nền
+        background: "linear-gradient(135deg, #1a1a1a 0%, #4a2c00 100%)", // Gradient đen - vàng đậm
       }}
     >
       <Card
         style={{
-          width: 450, // Tăng width để chứa thêm input
+          width: 450,
           borderRadius: 16,
-          boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)", // Đổ bóng đẹp
-          background: "#fff",
+          boxShadow: "0 8px 24px rgba(0, 0, 0, 0.3)",
+          background: "#fffef7", // Màu trắng ngà nhẹ nhàng
           padding: "20px",
         }}
         cover={
@@ -76,14 +75,14 @@ const Register = () => {
             style={{
               textAlign: "center",
               padding: "20px 0",
-              background: "rgba(255, 255, 255, 0.1)",
+              background: "rgba(255, 215, 0, 0.1)", // Vàng nhạt trong suốt
               borderRadius: "16px 16px 0 0",
             }}
           >
             <Title
               level={2}
               style={{
-                color: "#1890ff",
+                color: "#d4af37", // Vàng ánh kim
                 margin: 0,
                 fontWeight: 700,
                 textTransform: "uppercase",
@@ -91,7 +90,7 @@ const Register = () => {
             >
               Đăng Ký
             </Title>
-            <Text style={{ color: "#666" }}>
+            <Text style={{ color: "#4a4a4a" }}>
               Tạo tài khoản mới để bắt đầu!
             </Text>
           </div>
@@ -109,12 +108,13 @@ const Register = () => {
             ]}
           >
             <Input
-              prefix={<UserOutlined style={{ color: "#1890ff" }} />}
+              prefix={<UserOutlined style={{ color: "#d4af37" }} />}
               placeholder="Tên tài khoản"
               size="large"
               style={{
                 borderRadius: 8,
                 padding: "10px",
+                borderColor: "#d4af37",
               }}
             />
           </Form.Item>
@@ -127,12 +127,13 @@ const Register = () => {
             ]}
           >
             <Input
-              prefix={<MailOutlined style={{ color: "#1890ff" }} />}
+              prefix={<MailOutlined style={{ color: "#d4af37" }} />}
               placeholder="Email"
               size="large"
               style={{
                 borderRadius: 8,
                 padding: "10px",
+                borderColor: "#d4af37",
               }}
             />
           </Form.Item>
@@ -148,12 +149,13 @@ const Register = () => {
             ]}
           >
             <Input
-              prefix={<PhoneOutlined style={{ color: "#1890ff" }} />}
+              prefix={<PhoneOutlined style={{ color: "#d4af37" }} />}
               placeholder="Số điện thoại"
               size="large"
               style={{
                 borderRadius: 8,
                 padding: "10px",
+                borderColor: "#d4af37",
               }}
             />
           </Form.Item>
@@ -166,12 +168,13 @@ const Register = () => {
             ]}
           >
             <Input.Password
-              prefix={<LockOutlined style={{ color: "#1890ff" }} />}
+              prefix={<LockOutlined style={{ color: "#d4af37" }} />}
               placeholder="Mật khẩu"
               size="large"
               style={{
                 borderRadius: 8,
                 padding: "10px",
+                borderColor: "#d4af37",
               }}
             />
           </Form.Item>
@@ -186,16 +189,16 @@ const Register = () => {
               style={{
                 borderRadius: 8,
                 height: 48,
-                background: "#1890ff",
+                background: "#d4af37", // Màu vàng kim loại
                 border: "none",
                 fontWeight: 600,
                 transition: "all 0.3s",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "#40a9ff")
+                (e.currentTarget.style.background = "#e6c34c")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "#1890ff")
+                (e.currentTarget.style.background = "#d4af37")
               }
             >
               Đăng ký
@@ -210,7 +213,7 @@ const Register = () => {
             <Link to="/login">
               <Text
                 style={{
-                  color: "#1890ff",
+                  color: "#d4af37",
                   fontWeight: 500,
                   textDecoration: "underline",
                 }}
