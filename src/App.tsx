@@ -19,6 +19,7 @@ import RegisterAdmin from "./components/auth/RegisterAdmin";
 import ClientLayout from "./layout/client"; // Import layout mới
 import Cart from "./components/client/Cart";
 import GoldPriceTable from "./components/client/GoldPrice";
+import CartAdmin from "./components/admin/CartAdmin";
 
 export default function App() {
   const routes = useRoutes([
@@ -31,6 +32,7 @@ export default function App() {
         </ProtectedRoute>
       ),
       children: [
+        { path: "cart", element: <CartAdmin /> },
         { path: "", element: <Dashboard /> },
         { path: "products", element: <ListProducts /> },
         { path: "addproducts", element: <AddProducts /> },
@@ -52,8 +54,8 @@ export default function App() {
         { path: "", element: <Home /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
-        {path:"cart", element:<Cart/>},
-        {path:"goldprice", element:<GoldPriceTable/>}
+        { path:"cart", element:<Cart/> },
+        { path:"goldprice", element:<GoldPriceTable/> }
 
       ],
     },

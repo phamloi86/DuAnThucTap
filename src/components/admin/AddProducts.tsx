@@ -33,6 +33,7 @@ const AddProducts = () => {
       await axios.post(`http://localhost:3000/products`, data);
       message.success("Thêm sản phẩm thành công!");
       navigate("/admin/products");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       message.error("Thêm sản phẩm thất bại!");
     }
