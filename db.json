@@ -71,6 +71,15 @@
       "description": "123",
       "categoryId": 1,
       "id": 17
+    },
+    {
+      "name": "Duong",
+      "image": "khongco",
+      "price": "123",
+      "description": "123",
+      "categoryId": 2,
+      "inStock": true,
+      "id": 18
     }
   ],
   "categories": [
@@ -79,44 +88,56 @@
       "name": "Điện thoại",
       "slug": "dien-thoai",
       "parentId": null,
-      "active":true
+      "active": true
     },
     {
       "id": 2,
       "name": "Laptop",
       "slug": "laptop",
       "parentId": null,
-      "active":true
+      "active": true
     },
     {
       "id": 4,
       "name": "Samsung",
       "slug": "samsung",
-      "parentId": 7
+      "parentId": 7,
+      "active": true
     },
     {
       "id": 5,
       "name": "MacBook",
       "slug": "macbook",
-      "parentId": 2
+      "parentId": 2,
+      "active": true
     },
     {
       "id": 6,
       "name": "Dell",
       "slug": "dell",
-      "parentId": 2
+      "parentId": 2,
+      "active": true
     },
     {
       "name": "phung Duong",
       "slug": "duong",
       "parentId": null,
-      "id": 7
+      "id": 7,
+      "active": true
     },
     {
       "name": "Duong con",
       "slug": "conduong",
       "parentId": 7,
-      "id": 8
+      "id": 8,
+      "active": true
+    },
+    {
+      "name": "Blind Box",
+      "slug": "blind-box",
+      "parentId": null,
+      "active": true,
+      "id": 9
     }
   ],
   "users": [
@@ -151,8 +172,8 @@
       "phone": "0123123123",
       "role": "admin",
       "id": 4,
-      "isLocked": false,
-      "lockUntil": null
+      "isLocked": true,
+      "lockUntil": "2026-03-18T02:57:11.955Z"
     },
     {
       "email": "admin123@example.com",

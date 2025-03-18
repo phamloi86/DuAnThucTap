@@ -5,6 +5,7 @@ import { Icategory } from "../../interfaces/category";
 import axios from "axios";
 import { Table, Button, Typography, Modal, Space, Image, Tag } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { Helmet } from "react-helmet-async";
 
 const { confirm } = Modal;
 const { Title } = Typography;
@@ -103,6 +104,10 @@ const ListProducts = () => {
   ];
 
   return (
+    <>
+    <Helmet>
+      <title>Danh sách sản phẩm</title>
+    </Helmet>
     <div style={{ maxWidth: "1200px", margin: "auto", padding: "24px", background: "white", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)", marginTop: "24px" }}>
       <Title level={2} style={{ textAlign: "center" }}>Danh sách sản phẩm</Title>
       <div style={{ textAlign: "center", marginBottom: "16px" }}>
@@ -112,6 +117,7 @@ const ListProducts = () => {
       </div>
       <Table dataSource={products} columns={columns} rowKey="id" bordered />
     </div>
+    </>
   );
 };
 

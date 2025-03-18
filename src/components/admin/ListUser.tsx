@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Table, Button, Typography, Tag, Space } from "antd";
 import { Iuser } from "../../interfaces/user";
+import { Helmet } from "react-helmet-async";
 
 const { Title } = Typography;   
 
@@ -65,6 +66,11 @@ const ListUser = () => {
   ];
 
   return (
+    <>
+        <Helmet>
+          
+          <title>Danh sách người dùng</title>
+        </Helmet>
     <div
       style={{
         maxWidth: "1000px",
@@ -88,6 +94,7 @@ const ListUser = () => {
       </div>
       <Table dataSource={users} columns={columns} rowKey="id" bordered />
     </div>
+    </>
   );
 };
 
