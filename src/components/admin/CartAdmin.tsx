@@ -20,7 +20,8 @@ const orderStatusMap: Record<number, string> = {
   3: "Đang giao",
   4: "Đã giao",
   5: "Giao thành công",
-  6: "Giao thất bại",
+  6: "hoàn thành đơn hàng",
+  7: "Hủy đơn hàng"
 };
 
 const getStatusTag = (status: number) => {
