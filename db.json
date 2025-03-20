@@ -1,4 +1,30 @@
 {
+  "orders": [
+    {
+      "id": 1,
+      "orderCode": "ORD123456",
+      "orderDate": "2025-03-20T10:30:00Z",
+      "paymentMethod": "Credit Card",
+      "paymentStatus": "Paid",
+      "orderStatus": "Shipped"
+    },
+    {
+      "id": 2,
+      "orderCode": "ORD123457",
+      "orderDate": "2025-03-19T15:45:00Z",
+      "paymentMethod": "PayPal",
+      "paymentStatus": "Pending",
+      "orderStatus": "Processing"
+    },
+    {
+      "id": 3,
+      "orderCode": "ORD123458",
+      "orderDate": "2025-03-18T09:20:00Z",
+      "paymentMethod": "Cash on Delivery",
+      "paymentStatus": "Unpaid",
+      "orderStatus": "Pending"
+    }
+  ],
   "products": [
     {
       "id": 1,
