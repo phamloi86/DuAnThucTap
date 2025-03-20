@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Table, Button, Space, Tag } from "antd";
+import { Link } from "react-router-dom";
 
 interface Order {
   id: number;
@@ -57,12 +58,16 @@ const columns = [
   {
     title: "Hành động",
     key: "actions",
-    render: () => (
+    render: (_: any, record: Order) => (
       <Space>
-        <Button type="primary">Chỉnh sửa</Button>
-        <Button style={{backgroundColor: "#50c878", borderColor: "#50c878"}} type="default">Chi tiết</Button>
+        <Link to={`/admin/updatecart/${record.id}`}>
+          <Button type="primary">✏ Chỉnh sửa</Button>
+        </Link>
+        <Button style={{ backgroundColor: "#50c878", borderColor: "#50c878" }} type="default">
+          Chi tiết
+        </Button>
       </Space>
-    ),
+    ),    
   },
 ];
 

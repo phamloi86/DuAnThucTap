@@ -20,6 +20,7 @@ import ClientLayout from "./layout/client"; // Import layout mới
 import Cart from "./components/client/Cart";
 import GoldPriceTable from "./components/client/GoldPrice";
 import CartAdmin from "./components/admin/CartAdmin";
+import UpdateCart from "./components/admin/UpdateCart";
 
 export default function App() {
   const routes = useRoutes([
@@ -32,6 +33,7 @@ export default function App() {
         </ProtectedRoute>
       ),
       children: [
+        { path: "/admin/updatecart/:id", element: <UpdateCart />},
         { path: "cart", element: <CartAdmin /> },
         { path: "", element: <Dashboard /> },
         { path: "products", element: <ListProducts /> },
