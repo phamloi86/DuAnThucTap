@@ -60,7 +60,7 @@ const columns = [
     render: () => (
       <Space>
         <Button type="primary">Chỉnh sửa</Button>
-        <Button danger>Xóa</Button>
+        <Button style={{backgroundColor: "#50c878", borderColor: "#50c878"}} type="default">Chi tiết</Button>
       </Space>
     ),
   },
