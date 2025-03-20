@@ -1,7 +1,5 @@
 import React from "react";
-import { Card, CardContent } from "../ui/Cart";
-import { Button } from "../ui/Button";
-import { Table } from "../ui/Table"; // Import Table component
+import { Card, Table, Button, Space, Tag } from "antd";
 
 interface Order {
   id: number;
@@ -17,41 +15,63 @@ const orders: Order[] = [
   { id: 2, orderCode: "DH002", orderDate: "2025-03-16", paymentMethod: 2, paymentStatus: 2, orderStatus: 3 },
 ];
 
-// Chuyển đổi dữ liệu orders thành mảng 2D
-const tableData = orders.map((order, index) => [
-  index + 1,
-  order.orderCode,
-  order.orderDate,
-  order.paymentMethod === 1 ? "Chuyển khoản" : order.paymentMethod === 2 ? "Tiền mặt" : "Thẻ tín dụng",
-  order.paymentStatus === 1 ? "Chưa thanh toán" : "Đã thanh toán",
-  order.orderStatus === 1
-    ? "Chưa xác nhận"
-    : order.orderStatus === 2
-    ? "Đã xác nhận"
-    : order.orderStatus === 3
-    ? "Đang giao"
-    : order.orderStatus === 4
-    ? "Đã giao"
-    : order.orderStatus === 5
-    ? "Giao thành công"
-    : "Giao thất bại",
-  <div>
-    <Button className="mr-2">Chỉnh sửa</Button>
-    <Button className="bg-red-600 text-white">Xóa</Button>
-  </div>,
-]);
+const paymentMethodMap: Record<number, string> = {
+  1: "Chuyển khoản",
+  2: "Tiền mặt",
+  3: "Thẻ tín dụng",
+};
 
-const headers = ["STT", "Mã đơn hàng", "Ngày đặt", "Phương thức thanh toán", "Trạng thái thanh toán", "Trạng thái đơn hàng", "Hành động"];
+const paymentStatusMap: Record<number, string> = {
+  1: "Chưa thanh toán",
+  2: "Đã thanh toán",
+};
+
+const orderStatusMap: Record<number, string> = {
+  1: "Chưa xác nhận",
+  2: "Đã xác nhận",
+  3: "Đang giao",
+  4: "Đã giao",
+  5: "Giao thành công",
+  6: "Giao thất bại",
+};
+
+const getStatusTag = (status: number) => {
+  const colorMap: Record<number, string> = {
+    1: "default",
+    2: "processing",
+    3: "blue",
+    4: "green",
+    5: "success",
+    6: "error",
+  };
+  return <Tag color={colorMap[status]}>{orderStatusMap[status]}</Tag>;
+};
+
+const columns = [
+  { title: "STT", dataIndex: "id", key: "id" },
+  { title: "Mã đơn hàng", dataIndex: "orderCode", key: "orderCode" },
+  { title: "Ngày đặt", dataIndex: "orderDate", key: "orderDate" },
+  { title: "Phương thức thanh toán", dataIndex: "paymentMethod", key: "paymentMethod", render: (method: number) => paymentMethodMap[method] },
+  { title: "Trạng thái thanh toán", dataIndex: "paymentStatus", key: "paymentStatus", render: (status: number) => paymentStatusMap[status] },
+  { title: "Trạng thái đơn hàng", dataIndex: "orderStatus", key: "orderStatus", render: getStatusTag },
+  {
+    title: "Hành động",
+    key: "actions",
+    render: () => (
+      <Space>
+        <Button type="primary">Chỉnh sửa</Button>
+        <Button danger>Xóa</Button>
+      </Space>
+    ),
+  },
+];
 
 const OrderManagement: React.FC = () => {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Quản lý đơn hàng</h1>
+    <div style={{ padding: 24 }}>
+      <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Quản lý đơn hàng</h1>
       <Card>
-        <CardContent>
-          {/* Sử dụng Table component thay vì viết table trực tiếp */}
-          <Table headers={headers} data={tableData} />
-        </CardContent>
+        <Table columns={columns} dataSource={orders} rowKey="id" pagination={{ pageSize: 5 }} />
       </Card>
     </div>
   );
