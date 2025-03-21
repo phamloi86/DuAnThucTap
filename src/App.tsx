@@ -33,6 +33,7 @@ export default function App() {
         </ProtectedRoute>
       ),
       children: [
+        { path: "/admin/detailcart" }
         { path: "/admin/updatecart/:id", element: <UpdateCart />},
         { path: "cart", element: <CartAdmin /> },
         { path: "", element: <Dashboard /> },

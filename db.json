@@ -4,25 +4,25 @@
       "id": 1,
       "orderCode": "ORD123456",
       "orderDate": "2025-03-20T10:30:00Z",
-      "paymentMethod": "Credit Card",
-      "paymentStatus": "Paid",
-      "orderStatus": "Shipped"
+      "paymentMethod": 2,
+      "paymentStatus": 1,
+      "orderStatus": 2
     },
     {
       "id": 2,
       "orderCode": "ORD123457",
       "orderDate": "2025-03-19T15:45:00Z",
-      "paymentMethod": "PayPal",
-      "paymentStatus": "Pending",
-      "orderStatus": "Processing"
+      "paymentMethod": 2,
+      "paymentStatus": 2,
+      "orderStatus": 2
     },
     {
       "id": 3,
       "orderCode": "ORD123458",
       "orderDate": "2025-03-18T09:20:00Z",
-      "paymentMethod": "Cash on Delivery",
-      "paymentStatus": "Unpaid",
-      "orderStatus": "Pending"
+      "paymentMethod": 2,
+      "paymentStatus": 1,
+      "orderStatus": 2
     }
   ],
   "products": [
@@ -105,14 +105,14 @@
       "name": "Điện thoại",
       "slug": "dien-thoai",
       "parentId": null,
-      "active":true
+      "active": true
     },
     {
       "id": 2,
       "name": "Laptop",
       "slug": "laptop",
       "parentId": null,
-      "active":true
+      "active": true
     },
     {
       "id": 4,

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Table, Button, Space, Tag } from "antd";
 import { Link } from "react-router-dom";
-import { useOrders } from "./OrderContext"; // Import context
 
 const paymentMethodMap: Record<number, string> = {
   1: "Chuyển khoản",
@@ -20,7 +19,7 @@ const orderStatusMap: Record<number, string> = {
   3: "Đang giao",
   4: "Đã giao",
   5: "Giao thành công",
-  6: "hoàn thành đơn hàng",
+  6: "Hoàn thành đơn hàng",
   7: "Hủy đơn hàng"
 };
 
@@ -37,15 +36,37 @@ const getStatusTag = (status: number) => {
 };
 
 const CartAdmin: React.FC = () => {
-  const { orders } = useOrders(); // Lấy danh sách đơn hàng từ context
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/orders")
+      .then((res) => res.json())
+      .then((data) => setOrders(data))
+      .catch((err) => console.error("Lỗi khi lấy danh sách đơn hàng:", err));
+  }, []);
 
   const columns = [
     { title: "STT", dataIndex: "id", key: "id" },
     { title: "Mã đơn hàng", dataIndex: "orderCode", key: "orderCode" },
     { title: "Ngày đặt", dataIndex: "orderDate", key: "orderDate" },
-    { title: "Phương thức thanh toán", dataIndex: "paymentMethod", key: "paymentMethod", render: (method: number) => paymentMethodMap[method] },
-    { title: "Trạng thái thanh toán", dataIndex: "paymentStatus", key: "paymentStatus", render: (status: number) => paymentStatusMap[status] },
-    { title: "Trạng thái đơn hàng", dataIndex: "orderStatus", key: "orderStatus", render: getStatusTag },
+    { 
+      title: "Phương thức thanh toán", 
+      dataIndex: "paymentMethod", 
+      key: "paymentMethod", 
+      render: (method: number) => paymentMethodMap[method] 
+    },
+    { 
+      title: "Trạng thái thanh toán", 
+      dataIndex: "paymentStatus", 
+      key: "paymentStatus", 
+      render: (status: number) => paymentStatusMap[status] 
+    },
+    { 
+      title: "Trạng thái đơn hàng", 
+      dataIndex: "orderStatus", 
+      key: "orderStatus", 
+      render: getStatusTag 
+    },
     {
       title: "Hành động",
       key: "actions",
@@ -58,7 +79,7 @@ const CartAdmin: React.FC = () => {
             Chi tiết
           </Button>
         </Space>
-      ),    
+      ),
     },
   ];
 

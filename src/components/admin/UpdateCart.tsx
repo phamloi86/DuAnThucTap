@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Card, Form, Input, Select, Button, DatePicker } from "antd";
-import { useOrders } from "./OrderContext";
+import { Card, Form, Input, Select, Button, DatePicker, message } from "antd";
 import dayjs from "dayjs";
 
 const { Option } = Select;
@@ -9,23 +8,43 @@ const { Option } = Select;
 const UpdateCart: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { orders, updateOrder } = useOrders();
+  const [formData, setFormData] = useState<any>(null);
 
-  const order = orders.find((o) => o.id === Number(id));
-  const [formData, setFormData] = useState(order);
+  useEffect(() => {
+    fetch(`http://localhost:3000/orders/${id}`)
+      .then((res) => res.json())
+      .then((data) => setFormData(data))
+      .catch((err) => console.error("Lỗi khi lấy đơn hàng:", err));
+  }, [id]);
 
   if (!formData) {
     return <div>Không tìm thấy đơn hàng</div>;
   }
 
   const handleChange = (key: string, value: any) => {
-    setFormData((prev) => ({ ...prev!, [key]: value }));
+    setFormData((prev: any) => ({ ...prev, [key]: value }));
   };
 
-  const handleSubmit = () => {
-    updateOrder(formData);
-    console.log("Updated Order:", formData);
-    navigate("/admin/cart");
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/orders/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        message.success("Cập nhật đơn hàng thành công!");
+        navigate("/admin/cart");
+      } else {
+        message.error("Cập nhật thất bại, vui lòng thử lại!");
+      }
+    } catch (error) {
+      console.error("Lỗi khi cập nhật đơn hàng:", error);
+      message.error("Đã có lỗi xảy ra!");
+    }
   };
 
   return (
