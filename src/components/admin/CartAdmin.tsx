@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Table, Button, Space, Tag } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const paymentMethodMap: Record<number, string> = {
   1: "Chuyển khoản",
@@ -37,6 +37,7 @@ const getStatusTag = (status: number) => {
 
 const CartAdmin: React.FC = () => {
   const [orders, setOrders] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("http://localhost:3000/orders")
@@ -75,9 +76,11 @@ const CartAdmin: React.FC = () => {
           <Link to={`/admin/updatecart/${record.id}`}>
             <Button type="primary">✏ Chỉnh sửa</Button>
           </Link>
+          <Link to={`/admin/detailcart/${record.id}`}>
           <Button style={{ backgroundColor: "#50c878", borderColor: "#50c878" }} type="default">
             Chi tiết
           </Button>
+          </Link>
         </Space>
       ),
     },

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Dashboard = () => {
+const DetailCart = () => {
   return (
     <>
-    <div>Dashboard Home</div>
+    <div>DetailCart Home</div>
     </>
   )
 }
 
-export default Dashboard
+export default DetailCart

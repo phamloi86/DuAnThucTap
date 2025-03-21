@@ -21,6 +21,7 @@ import Cart from "./components/client/Cart";
 import GoldPriceTable from "./components/client/GoldPrice";
 import CartAdmin from "./components/admin/CartAdmin";
 import UpdateCart from "./components/admin/UpdateCart";
+import DetailCart from "./components/admin/DetailCart";
 
 export default function App() {
   const routes = useRoutes([
@@ -33,7 +34,7 @@ export default function App() {
         </ProtectedRoute>
       ),
       children: [
-        { path: "/admin/detailcart" }
+        { path: "/admin/detailcart/:id", element: <DetailCart /> },
         { path: "/admin/updatecart/:id", element: <UpdateCart />},
         { path: "cart", element: <CartAdmin /> },
         { path: "", element: <Dashboard /> },
