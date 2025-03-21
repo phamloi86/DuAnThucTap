@@ -6,7 +6,7 @@
       "orderDate": "2025-03-20T10:30:00Z",
       "paymentMethod": 2,
       "trang_thai_thanh_toan": 2,
-      "price": 3000,
+      "price": 30000,
       "orderStatus": 2,
       "quantity": 2,
       "paymentStatus": 2
@@ -17,7 +17,7 @@
       "orderDate": "2025-03-19T15:45:00Z",
       "paymentMethod": 2,
       "trang_thai_thanh_toan": 2,
-      "price": 4000,
+      "price": 40000,
       "orderStatus": 2,
       "quantity": 1,
       "paymentStatus": 2
