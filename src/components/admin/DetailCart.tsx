@@ -1,42 +1,69 @@
-import React from "react";
-import { Card, Col, Descriptions, Row, Table, Typography } from "antd";
+import React, { useEffect, useState } from "react";
+import { Card, Col, Descriptions, Row, Table, Typography, Spin } from "antd";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const DetailCart: React.FC = () => {
   const { id } = useParams();
 
-  // Dữ liệu giả lập (Có thể thay bằng API sau này)
-  const orderData = {
-    orderId: id,
-    orderDate: "2025-03-21",
-    status: "Đã giao",
-    totalAmount: "2,500,000 VND",
-    shippingFee: "50,000 VND",
-    paymentMethod: "Chuyển khoản",
-  };
+  // State để lưu dữ liệu từ API
+  const [orderData, setOrderData] = useState<any>(null);
+  const [userInfo, setUserInfo] = useState<any>(null);
+  const [receiverInfo, setReceiverInfo] = useState<any>(null);
+  const [orderItems, setOrderItems] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const userInfo = {
-    name: "Nguyễn Văn A",
-    email: "nguyenvana@example.com",
-    phone: "0123 456 789",
-    address: "123 Đường ABC, Quận 1, TP. HCM",
-  };
+  useEffect(() => {
+    // Gọi API lấy thông tin người đặt, người nhận và danh sách sản phẩm
+    const fetchData = async () => {
+      try {
+        setLoading(true);
 
-  const receiverInfo = {
-    name: "Trần Thị B",
-    email: "tranthib@example.com",
-    phone: "0987 654 321",
-    address: "456 Đường XYZ, Quận 2, TP. HCM",
-  };
+        // Lấy danh sách user (giả sử API trả về danh sách user)
+        const userResponse = await axios.get("http://localhost:3000/users");
+        if (userResponse.data.length > 0) {
+          setUserInfo(userResponse.data[0]); // Người đặt hàng
+          setReceiverInfo(userResponse.data[1] || userResponse.data[0]); // Người nhận hàng
+        }
 
-  const orderItems = [
-    { key: 1, name: "Laptop ASUS", price: "20,000,000 VND", quantity: 1, total: "20,000,000 VND" },
-    { key: 2, name: "Chuột Logitech", price: "500,000 VND", quantity: 1, total: "500,000 VND" },
-  ];
+        // Lấy danh sách sản phẩm (giả sử API trả về danh sách sản phẩm)
+        const productResponse = await axios.get("http://localhost:3000/products");
+        const products = productResponse.data.map((item: any, index: number) => ({
+          key: index + 1,
+          name: item.name,
+          price: `${item.price} VND`,
+          quantity: item.quantity || 1,
+          total: `${(item.price * (item.quantity || 1)).toLocaleString()} VND`,
+        }));
+        setOrderItems(products);
+
+        // Giả lập thông tin đơn hàng
+        setOrderData({
+          orderId: id,
+          orderDate: "2025-03-21",
+          status: "Đã giao",
+          totalAmount: `${products.reduce((sum, item) => sum + item.price * item.quantity, 0).toLocaleString()} VND`,
+          shippingFee: "50,000 VND",
+          paymentMethod: "Chuyển khoản",
+        });
+
+        setLoading(false);
+      } catch (error) {
+        console.error("Lỗi khi lấy dữ liệu:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+
+  if (loading) {
+    return <Spin size="large" style={{ display: "block", textAlign: "center", marginTop: 50 }} />;
+  }
 
   return (
     <div style={{ padding: 20 }}>
-      <Typography.Title level={3}>Chi tiết đơn hàng #{orderData.orderId}</Typography.Title>
+      <Typography.Title level={3}>Chi tiết đơn hàng #{orderData?.orderId}</Typography.Title>
 
       {/* Bố cục 3 cột */}
       <Row gutter={[16, 16]}>
@@ -44,12 +71,12 @@ const DetailCart: React.FC = () => {
         <Col span={8}>
           <Card title="Thông tin đơn hàng">
             <Descriptions column={1}>
-              <Descriptions.Item label="Mã đơn hàng">{orderData.orderId}</Descriptions.Item>
-              <Descriptions.Item label="Ngày đặt hàng">{orderData.orderDate}</Descriptions.Item>
-              <Descriptions.Item label="Trạng thái">{orderData.status}</Descriptions.Item>
-              <Descriptions.Item label="Tổng tiền">{orderData.totalAmount}</Descriptions.Item>
-              <Descriptions.Item label="Phí vận chuyển">{orderData.shippingFee}</Descriptions.Item>
-              <Descriptions.Item label="Thanh toán">{orderData.paymentMethod}</Descriptions.Item>
+              <Descriptions.Item label="Mã đơn hàng">{orderData?.orderId}</Descriptions.Item>
+              <Descriptions.Item label="Ngày đặt hàng">{orderData?.orderDate}</Descriptions.Item>
+              <Descriptions.Item label="Trạng thái">{orderData?.status}</Descriptions.Item>
+              <Descriptions.Item label="Tổng tiền">{orderData?.totalAmount}</Descriptions.Item>
+              <Descriptions.Item label="Phí vận chuyển">{orderData?.shippingFee}</Descriptions.Item>
+              <Descriptions.Item label="Thanh toán">{orderData?.paymentMethod}</Descriptions.Item>
             </Descriptions>
           </Card>
         </Col>
@@ -58,10 +85,10 @@ const DetailCart: React.FC = () => {
         <Col span={8}>
           <Card title="Thông tin người đặt hàng">
             <Descriptions column={1}>
-              <Descriptions.Item label="Họ tên">{userInfo.name}</Descriptions.Item>
-              <Descriptions.Item label="Email">{userInfo.email}</Descriptions.Item>
-              <Descriptions.Item label="Số điện thoại">{userInfo.phone}</Descriptions.Item>
-              <Descriptions.Item label="Địa chỉ">{userInfo.address}</Descriptions.Item>
+              <Descriptions.Item label="Họ tên">{userInfo?.username}</Descriptions.Item>
+              <Descriptions.Item label="Email">{userInfo?.email}</Descriptions.Item>
+              <Descriptions.Item label="Số điện thoại">{userInfo?.phone}</Descriptions.Item>
+              <Descriptions.Item label="Địa chỉ">{userInfo?.address}</Descriptions.Item>
             </Descriptions>
           </Card>
         </Col>
@@ -70,10 +97,10 @@ const DetailCart: React.FC = () => {
         <Col span={8}>
           <Card title="Thông tin người nhận hàng">
             <Descriptions column={1}>
-              <Descriptions.Item label="Họ tên">{receiverInfo.name}</Descriptions.Item>
-              <Descriptions.Item label="Email">{receiverInfo.email}</Descriptions.Item>
-              <Descriptions.Item label="Số điện thoại">{receiverInfo.phone}</Descriptions.Item>
-              <Descriptions.Item label="Địa chỉ">{receiverInfo.address}</Descriptions.Item>
+              <Descriptions.Item label="Họ tên">{receiverInfo?.username}</Descriptions.Item>
+              <Descriptions.Item label="Email">{receiverInfo?.email}</Descriptions.Item>
+              <Descriptions.Item label="Số điện thoại">{receiverInfo?.phone}</Descriptions.Item>
+              <Descriptions.Item label="Địa chỉ">{receiverInfo?.address}</Descriptions.Item>
             </Descriptions>
           </Card>
         </Col>
