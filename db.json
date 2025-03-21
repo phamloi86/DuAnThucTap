@@ -162,6 +162,7 @@
       "password": "$2a$10$Ga4bEYveOmGHZsxl.aKcG.efNt7Q7VlTAEz/bKRf1i9eNoCdM21Aq",
       "username": "client123",
       "phone": "9090909090",
+      "address": "123 Đường ABC, Quận 1, TP. HCM",
       "role": "client",
       "id": 2
     },
@@ -170,6 +171,7 @@
       "password": "$2a$10$h8PvDKwcYiW4zz6Z7hKpveXHJlWkahXfZP0PD33deHfvcwo19kSH6",
       "username": "Duong",
       "phone": "0941097302",
+      "address": "123 Đường ABC, Quận 1, TP. HCM",
       "role": "client",
       "id": 3
     },
@@ -211,6 +213,7 @@
       "username": "demonxxx",
       "email": "demonxxx@gmail.com",
       "phone": "0941097302",
+      "address": "123 Đường ABC, Quận 1, TP. HCM",
       "role": "client",
       "password": "$2a$10$QFBZL2nDW838s4IE3D1AoOX9AeQS/YfCPdkm.6M1tGV5rS.uPr5oG",
       "id": 8,

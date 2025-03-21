@@ -3,6 +3,7 @@ export interface Iuser {
     username: string;
     email: string;
     phone: string;
+    address: string;
     role: "admin" | "client";
     password?: string; // Mật khẩu (ẩn trong danh sách, chỉ dùng khi sửa)
     isLocked?: boolean; // Trạng thái khóa
