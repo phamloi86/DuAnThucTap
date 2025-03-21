@@ -32,7 +32,10 @@ const UpdateCart: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          trang_thai_thanh_toan: formData.paymentStatus, // Cập nhật trạng thái thanh toán
+        }),
       });
 
       if (response.ok) {
@@ -60,14 +63,19 @@ const UpdateCart: React.FC = () => {
           <Form.Item label="Ngày đặt hàng">
             <DatePicker
               value={dayjs(formData.orderDate)}
-              onChange={(date) => handleChange("orderDate", date?.format("YYYY-MM-DD"))}
+              onChange={(date) =>
+                handleChange("orderDate", date?.format("YYYY-MM-DD"))
+              }
               format="YYYY-MM-DD"
             />
           </Form.Item>
 
           {/* Phương thức thanh toán */}
           <Form.Item label="Phương thức thanh toán">
-            <Select value={formData.paymentMethod} onChange={(value) => handleChange("paymentMethod", value)}>
+            <Select
+              value={formData.paymentMethod}
+              onChange={(value) => handleChange("paymentMethod", value)}
+            >
               <Option value={1}>Chuyển khoản</Option>
               <Option value={2}>Tiền mặt</Option>
               <Option value={3}>Thẻ tín dụng</Option>
@@ -76,7 +84,10 @@ const UpdateCart: React.FC = () => {
 
           {/* Trạng thái thanh toán */}
           <Form.Item label="Trạng thái thanh toán">
-            <Select value={formData.paymentStatus} onChange={(value) => handleChange("paymentStatus", value)}>
+            <Select
+              value={formData.paymentStatus}
+              onChange={(value) => handleChange("paymentStatus", value)}
+            >
               <Option value={1}>Chưa thanh toán</Option>
               <Option value={2}>Đã thanh toán</Option>
             </Select>
@@ -84,7 +95,10 @@ const UpdateCart: React.FC = () => {
 
           {/* Trạng thái đơn hàng */}
           <Form.Item label="Trạng thái đơn hàng">
-            <Select value={formData.orderStatus} onChange={(value) => handleChange("orderStatus", value)}>
+            <Select
+              value={formData.orderStatus}
+              onChange={(value) => handleChange("orderStatus", value)}
+            >
               <Option value={1}>Chưa xác nhận</Option>
               <Option value={2}>Đã xác nhận</Option>
               <Option value={3}>Đang giao</Option>
@@ -96,7 +110,9 @@ const UpdateCart: React.FC = () => {
 
           {/* Nút Lưu */}
           <Form.Item>
-            <Button type="primary" htmlType="submit">Lưu thay đổi</Button>
+            <Button type="primary" htmlType="submit">
+              Lưu thay đổi
+            </Button>
           </Form.Item>
         </Form>
       </Card>

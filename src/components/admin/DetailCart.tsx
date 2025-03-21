@@ -42,7 +42,7 @@ const DetailCart: React.FC = () => {
           orderId: id,
           orderDate: "2025-03-21",
           status: "Đã giao",
-          totalAmount: `${products.reduce((sum, item) => sum + item.price * item.quantity, 0).toLocaleString()} VND`,
+          totalAmount: `${products.reduce((sum: number, item: { price: number; quantity: number; }) => sum + item.price * item.quantity, 0).toLocaleString()} VND`,
           shippingFee: "50,000 VND",
           paymentMethod: "Chuyển khoản",
         });

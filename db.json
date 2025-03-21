@@ -5,27 +5,33 @@
       "orderCode": "ORD123456",
       "orderDate": "2025-03-20T10:30:00Z",
       "paymentMethod": 2,
-      "paymentStatus": 1,
+      "trang_thai_thanh_toan": 2,
       "price": 3000,
-      "orderStatus": 2
+      "orderStatus": 2,
+      "quantity": 2,
+      "paymentStatus": 2
     },
     {
       "id": 2,
       "orderCode": "ORD123457",
       "orderDate": "2025-03-19T15:45:00Z",
       "paymentMethod": 2,
-      "paymentStatus": 2,
+      "trang_thai_thanh_toan": 2,
       "price": 4000,
-      "orderStatus": 2
+      "orderStatus": 2,
+      "quantity": 1,
+      "paymentStatus": 2
     },
     {
       "id": 3,
       "orderCode": "ORD123458",
       "orderDate": "2025-03-18T09:20:00Z",
       "paymentMethod": 2,
-      "paymentStatus": 1,
+      "trang_thai_thanh_toan": 1,
       "price": 5000,
-      "orderStatus": 2
+      "orderStatus": 1,
+      "quantity": 3,
+      "paymentStatus": 1
     }
   ],
   "products": [

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Table, Button, Space, Tag } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const paymentMethodMap: Record<number, string> = {
   1: "Chuyển khoản",
@@ -37,7 +37,6 @@ const getStatusTag = (status: number) => {
 
 const CartAdmin: React.FC = () => {
   const [orders, setOrders] = useState([]);
-  const navigate = useNavigate()
 
   useEffect(() => {
     fetch("http://localhost:3000/orders")
