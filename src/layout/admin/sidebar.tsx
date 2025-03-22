@@ -20,7 +20,7 @@ const SidebarAdmin = () => {
       case "/admin/addproducts":
         setSelectedKey("2");
         break;
-      case "/admin/orders":
+      case "/admin/cart":
       case "/admin/addorders":
         setSelectedKey("3");
         break;
@@ -88,7 +88,7 @@ const SidebarAdmin = () => {
           </Dropdown>
         </Menu.Item>
         <Menu.Item key="3" className="font-bold">
-          <a href="/admin/orders">
+          <a href="/admin/cart">
             <Button type="text">
               Quản lý đơn hàng  
             </Button>
