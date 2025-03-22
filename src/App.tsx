@@ -17,8 +17,8 @@ import ProtectedRoute from "../src/components/auth/ProtectedRoute";
 import Register from "./components/auth/Register";
 import RegisterAdmin from "./components/auth/RegisterAdmin";
 import ClientLayout from "./layout/client"; // Import layout mới
-import Cart from "./components/client/Cart";
 import GoldPriceTable from "./components/client/GoldPrice";
+import Cart from "./components/client/Cart";
 import CartAdmin from "./components/admin/CartAdmin";
 import UpdateCart from "./components/admin/UpdateCart";
 import DetailCart from "./components/admin/DetailCart";
@@ -68,5 +68,6 @@ export default function App() {
     { path: "/im_dev__do_u_know_that", element: <RegisterAdmin /> },
   ]);
 
-  return <AuthProvider>{routes}</AuthProvider>;
+  return <AuthProvider>{routes}</AuthProvider>
+  ;
 }

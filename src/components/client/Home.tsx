@@ -1,7 +1,5 @@
-import { Button, Typography, Carousel, Image } from "antd";
-import { useAuth } from "../../components/auth/AuthContext";
+import { Carousel, Image } from "antd";
 
-const { Title } = Typography;
 
 const banners = [
   "https://insieutoc.vn/wp-content/uploads/2021/02/mau-banner-dep-mau-vang.jpg",
@@ -15,7 +13,7 @@ const Home = () => {
   return (
     <div style={{ textAlign: "center", marginTop: "20px", padding: "0 20px" }}>
       {/* Banner chạy tự động */}
-      <Carousel autoplay autoplaySpeed={5000} effect="fade" style={{ maxWidth: "1000px", margin: "auto", borderRadius: "10px", overflow: "hidden" }}>
+      <Carousel autoplay autoplaySpeed={2000} effect="fade" style={{ maxWidth: "1000px", margin: "auto", borderRadius: "10px", overflow: "hidden" }}>
         {banners.map((src, index) => (
           <div key={index}>
             <Image src={src} alt={`Banner ${index + 1}`} preview={false} style={{ width: "100%", borderRadius: "10px" }} />
