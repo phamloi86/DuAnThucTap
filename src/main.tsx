@@ -7,17 +7,16 @@ import App from "./App.tsx";
 import { OrderProvider } from "./components/admin/OrderContext.tsx"; // Import OrderProvider
 import "antd/dist/reset.css";
 
+const queryClient = new QueryClient(); // 🔥 Khởi tạo QueryClient
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <HelmetProvider>
         <QueryClientProvider client={queryClient}> {/* 🔥 Bọc App bằng QueryClientProvider */}
-          <OrderProvider>
-        <App />
+          <App />
         </QueryClientProvider>
       </HelmetProvider>
-      </OrderProvider>
     </BrowserRouter>
   </StrictMode>
 );
