@@ -4,7 +4,6 @@ import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // 🔥 Import thêm
 import App from "./App.tsx";
-import { OrderProvider } from "./components/admin/OrderContext.tsx"; // Import OrderProvider
 import "antd/dist/reset.css";
 
 const queryClient = new QueryClient(); // 🔥 Khởi tạo QueryClient
