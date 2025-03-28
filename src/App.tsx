@@ -13,16 +13,21 @@ import AddUser from "./components/admin/AddUser";
 import EditUser from "./components/admin/EditUser";
 import Login from "./components/auth/Login";
 import { AuthProvider } from "../src/components/auth/AuthContext";
+import { OrderProvider } from "./components/client/OrderContext"; // Thêm OrderProvider
+import { CartProvider } from "../src/components/client/CartContext"; // Thêm CartProvider
 import ProtectedRoute from "../src/components/auth/ProtectedRoute";
 import Register from "./components/auth/Register";
 import RegisterAdmin from "./components/auth/RegisterAdmin";
-import ClientLayout from "./layout/client"; // Import layout mới
+import ClientLayout from "./layout/client";
 import GoldPriceTable from "./components/client/GoldPrice";
 import Cart from "./components/client/Cart";
-import CartAdmin from "./components/admin/CartAdmin";
-import UpdateCart from "./components/admin/UpdateCart";
-import DetailCart from "./components/admin/DetailCart";
+import OrderAdmin from "./components/admin/OrderAdmin"; // Đổi tên từ CartAdmin
+import UpdateOrder from "./components/admin/UpdateOrder"; // Đổi tên từ UpdateCart
+import DetailOrder from "./components/admin/DetailOrder"; // Đổi tên từ DetailCart
 import DetailProduct from "./components/client/DetailProduct";
+import Checkout from "./components/client/Checkout";
+import Order from "./components/client/Order";
+import OrderDetail from "./components/client/OrderDetail";
 
 export default function App() {
   const routes = useRoutes([
@@ -35,9 +40,9 @@ export default function App() {
         </ProtectedRoute>
       ),
       children: [
-        { path: "/admin/detailcart/:id", element: <DetailCart /> },
-        { path: "/admin/updatecart/:id", element: <UpdateCart />},
-        { path: "cart", element: <CartAdmin /> },
+        { path: "detailorder/:id", element: <DetailOrder /> }, // Đổi tên route
+        { path: "updateorder/:id", element: <UpdateOrder /> }, // Đổi tên route
+        { path: "order", element: <OrderAdmin /> }, // Đổi tên route
         { path: "", element: <Dashboard /> },
         { path: "products", element: <ListProducts /> },
         { path: "addproducts", element: <AddProducts /> },
@@ -54,15 +59,17 @@ export default function App() {
     // Route Client (Dành cho người dùng)
     {
       path: "/",
-      element: <ClientLayout />, // Áp dụng layout client cho user
+      element: <ClientLayout />,
       children: [
-        { path: "detail/:id", element: < DetailProduct/>},
+        { path: "detail/:id", element: <DetailProduct /> },
         { path: "", element: <Home /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
-        { path:"cart", element:<Cart/> },
-        { path:"goldprice", element:<GoldPriceTable/> }
-
+        { path: "cart", element: <Cart /> },
+        { path: "checkout", element: <Checkout /> },
+        { path: "order", element: <Order /> },
+        { path: "order-detail/:id", element: <OrderDetail /> },
+        { path: "goldprice", element: <GoldPriceTable /> },
       ],
     },
 
@@ -70,6 +77,13 @@ export default function App() {
     { path: "/im_dev__do_u_know_that", element: <RegisterAdmin /> },
   ]);
 
-  return <AuthProvider>{routes}</AuthProvider>
-  ;
+  return (
+    <AuthProvider>
+      <CartProvider>
+        <OrderProvider> {/* Thêm OrderProvider */}
+          {routes}
+        </OrderProvider>
+      </CartProvider>
+    </AuthProvider>
+  );
 }
