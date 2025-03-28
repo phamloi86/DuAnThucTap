@@ -3,6 +3,7 @@ import { Layout, Input, Button, Row, Col, Typography, Avatar, Dropdown, Menu, Au
 import { UserOutlined, SearchOutlined, LogoutOutlined, LoginOutlined, UserAddOutlined, ShoppingCartOutlined, DollarOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../components/auth/AuthContext";
+import { useCart } from "../../components/client/CartContext"; // Import useCart
 import axios from "axios";
 
 const { Header } = Layout;
@@ -18,22 +19,10 @@ const removeAccents = (str: string) => {
 
 const HeaderClient = () => {
   const { user, logout } = useAuth();
+  const { cartItems } = useCart(); // Lấy cartItems từ CartContext
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState<string>("");
   const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
-  const [cartCount, setCartCount] = useState<number>(0);
-
-  useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const { data } = await axios.get("http://localhost:3000/cart");
-        setCartCount(data.length);
-      } catch (error) {
-        console.error("Lỗi khi lấy giỏ hàng:", error);
-      }
-    };
-    fetchCart();
-  }, []);
 
   const fetchProducts = async (query: string) => {
     try {
@@ -85,7 +74,6 @@ const HeaderClient = () => {
             <Text strong style={{ fontSize: "20px", color: "#D4AF37" }}>GOLD WORLD</Text>
           </Link>
         </Col>
-
         <Col flex="auto" style={{ margin: "0 20px" }}>
           <AutoComplete
             value={searchValue}
@@ -102,22 +90,20 @@ const HeaderClient = () => {
             />
           </AutoComplete>
         </Col>
-
         <Col>
           <Text style={{ color: "#D4AF37", fontWeight: "bold", marginRight: 16 }}>
-            <a style={{ color: "#D4AF37"}} href="/goldprice"><DollarOutlined /> Giá vàng hôm nay</a>
+            <a style={{ color: "#D4AF37" }} href="/goldprice">
+              <DollarOutlined /> Giá vàng hôm nay
+            </a>
           </Text>
         </Col>
-
-
         <Col>
           <Link to="/cart">
-            <Badge count={cartCount} showZero>
+            <Badge count={cartItems.length} showZero> {/* Hiển thị số lượng sản phẩm trong giỏ hàng */}
               <Button type="text" icon={<ShoppingCartOutlined />} style={{ color: "#D4AF37", fontSize: "18px" }} />
             </Badge>
           </Link>
         </Col>
-
         {user ? (
           <Col>
             <Dropdown overlay={userMenu} trigger={["click"]}>

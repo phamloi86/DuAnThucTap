@@ -30,6 +30,7 @@ const infoBoxes = [
   },
 ];
 
+
 const Home = () => {
   const navigate = useNavigate(); // Khai báo hook navigate
 
