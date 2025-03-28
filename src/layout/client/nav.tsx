@@ -50,7 +50,7 @@ const Nav = () => {
   }).filter(Boolean);
 
   return (
-    <Menu mode="horizontal" style={{ justifyContent: "flex-start", background: "#F5DEB3" }} items={menuItems} />
+    <Menu mode="horizontal" style={{ justifyContent: "flex-start", background: "#fff" }} items={menuItems} />
   );
 };
 
