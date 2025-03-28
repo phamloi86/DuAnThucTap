@@ -34,7 +34,90 @@
       "paymentStatus": 1
     }
   ],
+  "new_product": [
+    {
+      "id": 1,
+      "name": "Sản phẩm 1",
+      "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
+      "price": 99999,
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 1,
+      "inStock": true
+    },
+    {
+      "id": 2,
+      "name": "Sản phẩm 1",
+      "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
+      "price": 99999,
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 2,
+      "inStock": true
+    },
+    {
+      "id": 3,
+      "name": "Sản phẩm 1",
+      "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
+      "price": 99999,
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 3,
+      "inStock": true
+    },
+    {
+      "id": 4,
+      "name": "Sản phẩm 1",
+      "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
+      "price": 99999,
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 4,
+      "inStock": true
+    },
+    {
+      "id": 5,
+      "name": "Sản phẩm 1",
+      "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
+      "price": 99999,
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 5,
+      "inStock": true
+    },
+    {
+      "id": 6,
+      "name": "Sản phẩm 1",
+      "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
+      "price": 99999,
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 6,
+      "inStock": true
+    },
+    {
+      "id": 7,
+      "name": "Sản phẩm 1",
+      "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
+      "price": 99999,
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 7,
+      "inStock": true
+    },
+    {
+      "id": 8,
+      "name": "Sản phẩm 1",
+      "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
+      "price": 99999,
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 8,
+      "inStock": true
+    }
+  ],
   "products": [
+    {
+      "id": 1,
+      "name": "Sản phẩm 1",
+      "image": "https://img.pikbest.com/png-images/20241025/cute-robot-clipart-illustration-png_11003024.png!sw800",
+      "price": 99999,
+      "description": "Áo thun cotton mềm mại, thoáng mát.",
+      "categoryId": 1,
+      "inStock": true
+    },
     {
       "id": 1,
       "name": "Sản phẩm 1",
@@ -84,38 +167,11 @@
       "image": "https://sieuthidaisymart.com/wp-content/uploads/2024/12/blindbox-tui-mu-Baby-Three-400-8.jpg",
       "price": 12323122,
       "id": 10
-    },
-    {
-      "name": "Duong",
-      "image": "https://down-vn.img.susercontent.com/file/sg-11134201-7rdwa-m0ldu8qp9b449a",
-      "price": "999",
-      "id": 15,
-      "description": "Hả gì cơ"
-    },
-    {
-      "name": "Duong",
-      "image": "https://i5.walmartimages.com/asr/dfa5834e-b5f8-4377-80d8-7daba74ea974_1.4420c580f3c1dd7b3a5fe18d0cd73397.jpeg?odnHeight=372&odnWidth=372&odnBg=FFFFFF",
-      "price": "555",
-      "description": "555",
-      "id": 16
-    },
-    {
-      "name": "abdc",
-      "image": "https://th.bing.com/th/id/OIP.mwXBsgCgcB0DbYvS5UM1oQHaPO?rs=1&pid=ImgDetMain",
-      "price": "123",
-      "description": "123",
-      "categoryId": 1,
-      "id": 17
-    },
-    {
-      "name": "Duong",
-      "image": "khongco",
-      "price": "123",
-      "description": "123",
-      "categoryId": 2,
-      "inStock": true,
-      "id": 18
     }
+
+
+   
+   
   ],
   "categories": [
     {

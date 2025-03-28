@@ -22,6 +22,7 @@ import Cart from "./components/client/Cart";
 import CartAdmin from "./components/admin/CartAdmin";
 import UpdateCart from "./components/admin/UpdateCart";
 import DetailCart from "./components/admin/DetailCart";
+import DetailProduct from "./components/client/DetailProduct";
 
 export default function App() {
   const routes = useRoutes([
@@ -55,6 +56,7 @@ export default function App() {
       path: "/",
       element: <ClientLayout />, // Áp dụng layout client cho user
       children: [
+        { path: "detail/:id", element: < DetailProduct/>},
         { path: "", element: <Home /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
