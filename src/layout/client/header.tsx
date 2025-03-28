@@ -78,7 +78,7 @@ const HeaderClient = () => {
   );
 
   return (
-    <Header style={{ background: "#333", padding: "0 24px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
+    <Header style={{ background: "#ffffff", padding: "0 24px", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}>
       <Row justify="space-between" align="middle">
         <Col>
           <Link to="/">
@@ -95,8 +95,8 @@ const HeaderClient = () => {
             onSelect={handleSelect}
           >
             <Input
-              prefix={<SearchOutlined style={{ color: "#D4AF37" }} />}
-              style={{ borderRadius: "6px", background: "#444", color: "#D4AF37" }}
+              prefix={<SearchOutlined style={{ color: "#ffffff" }} />}
+              style={{ borderRadius: "6px", background: "#e9e9e9", color: "#fff" }}
               size="large"
               placeholder="Tìm kiếm sản phẩm..."
             />

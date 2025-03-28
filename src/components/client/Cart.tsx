@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, List, Typography, Col, Row } from 'antd';
+import { Card, Button, List, Typography } from 'antd';
 
 export interface Iproduct {
     id: string | number;
