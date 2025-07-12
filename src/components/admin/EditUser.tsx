@@ -65,7 +65,7 @@ const EditUsers = () => {
     try {
       const updateData = { ...data };
       if (!data.password) delete updateData.password; // Không gửi mật khẩu nếu không đổi
-      await axios.put(`http://localhost:3000/users/${id}`, updateData);
+      await axios.patch(`http://localhost:3000/users/${id}`, updateData);
       message.success("Cập nhật người dùng thành công!");
       navigate("/admin/users");
     } catch (error) {
