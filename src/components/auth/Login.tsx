@@ -27,49 +27,28 @@ const Login = () => {
   const onFinish = async (values: { email: string; password: string }) => {
     setLoading(true);
     try {
-      const { data: users } = await axios.get("http://localhost:3000/users");
-      const user = users.find((u: any) => u.email === values.email);
-
-      if (!user) {
-        message.error("Email không tồn tại!");
-        setLoading(false);
-        return;
-      }
-
-      const isMatch = await bcrypt.compare(values.password, user.password);
-      if (!isMatch) {
-        message.error("Mật khẩu không đúng!");
-        setLoading(false);
-        return;
-      }
-
-      if (user.isLocked && user.lockUntil) {
-        const lockDate = new Date(user.lockUntil);
-        const now = new Date();
-        if (lockDate > now) {
-          message.error(
-            `Tài khoản của bạn bị khóa đến ${lockDate.toLocaleDateString("vi-VN")}`
-          );
-          setLoading(false);
-          return;
-        }
-      }
-
-      login(user);
-      if (user.role === "admin") {
+      const { data } = await axios.post("http://localhost:3000/login", values);
+  
+      login(data.user); // bạn giữ như cũ
+      message.success("Đăng nhập thành công!");
+      if (data.user.role === "admin") {
         navigate("/admin");
       } else {
-        navigate("/");
+        //navigate("/");
       }
-      message.success("Đăng nhập thành công!");
-    } catch (error) {
-      console.error("Lỗi đăng nhập:", error);
-      message.error("Đăng nhập thất bại!");
+    } catch (error: any) {
+      if (error.response?.status === 401) {
+        message.error("Mật khẩu không đúng!");
+      } else if (error.response?.status === 404) {
+        message.error("Email không tồn tại!");
+      } else {
+        message.error("Đăng nhập thất bại!");
+      }
     } finally {
       setLoading(false);
     }
   };
-
+  
   return (
     <div
       style={{
@@ -193,9 +172,9 @@ const Login = () => {
                 Chưa có tài khoản? Đăng ký ngay
               </Text>
             </Link>
-            <a href="#">
-              <Text style={{ color: "#4a4a4a" }}>Quên mật khẩu?</Text>
-            </a>
+            <Link to="/forgot">
+              <Text style={{ color: "#4a4a4a", cursor: "pointer" }}>Quên mật khẩu?</Text>
+            </Link>
           </Space>
         </Form>
       </Card>
