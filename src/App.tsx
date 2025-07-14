@@ -28,6 +28,9 @@ import DetailProduct from "./components/client/DetailProduct";
 import Checkout from "./components/client/Checkout";
 import Order from "./components/client/Order";
 import OrderDetail from "./components/client/OrderDetail";
+import ForgotPassword from "./components/auth/ForgotPassword";
+import ResetPassword from "./components/auth/ResetPassword";
+import VerifyOtp from "./components/auth/VerifyOtp";
 
 export default function App() {
   const routes = useRoutes([
@@ -70,6 +73,9 @@ export default function App() {
         { path: "order", element: <Order /> },
         { path: "order-detail/:id", element: <OrderDetail /> },
         { path: "goldprice", element: <GoldPriceTable /> },
+        { path: "forgot", element: <ForgotPassword /> },
+        { path: "verify-otp", element: <VerifyOtp /> },
+        { path: "reset-password", element: <ResetPassword /> },
       ],
     },
 
